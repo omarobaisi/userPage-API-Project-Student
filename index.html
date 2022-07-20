@@ -1,34 +1,76 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>API Project</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Indie+Flower"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+  </head>
 
-</head>
-
-<body>
-    <div class="container">	
-        <div class="user-container"></div>	
-        <div class="quote-container"></div>	
-        <div class="content-container">	
-            <div class="pokemon-container"></div>	
-            <div class="meat-container"></div>	
-        </div>	
-        <div class="friends">	
-            <h4>Friends</h4>	
-            <div class="friends-container">	
-            </div>	
-        </div>	
-        <div class="buttons">	
-            <button>Load User Data</button>	
-            <button>Display User</button>	
-        </div>	
+  <body>
+    <div class="container">
+      <div class="user-container"></div>
+      <div class="quote-container"></div>
+      <div class="content-container">
+        <div class="pokemon-container"></div>
+        <div class="meat-container"></div>
+      </div>
+      <div class="friends">
+        <h4>Friends</h4>
+        <div class="friends-container"></div>
+      </div>
+      <div class="buttons">
+        <button id="loadUser">Load User Data</button>
+        <button id="displayUser">Display User</button>
+      </div>
     </div>
-</body>
 
+    <script id="user-template" type="text/x-handlebars-template">
+      <img id="profile-pic" src="{{item.picture}}" alt="" />
+      <div class="user-info">
+        <div>{{item.fName}} {{item.lName}}</div>
+        <div>{{item.state}}, {{item.city}}</div>
+      </div>
+    </script>
+    <script id="quote-template" type="text/x-handlebars-template">
+      <p>Favorite quote:</p>
+      <div>"{{item}}"</div>
+      <div>- Kanye West</div>
+    </script>
+    <script id="pokemon-template" type="text/x-handlebars-template">
+      <div id="pokemon-image"><img src="{{item.image}}" alt="" /></div>
+      <div id="pokemon-text">{{item.name}}</div>
+    </script>
+    <script id="meat-template" type="text/x-handlebars-template">
+      <div class="meat-text">
+        <div>About me:</div>
+        <div>{{item}}</div>
+      </div>
+    </script>
+    <script id="friends-template" type="text/x-handlebars-template">
+      <ul>
+        {{#each item}}
+          <div>{{fName}} {{lName}}</div>
+        {{/each}}
+      </ul>
+    </script>
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.js"></script>
+    <script src="main.js"></script>
+    <script src="APIManager.js"></script>
+    <script src="Renderer.js"></script>
+  </body>
 </html>
